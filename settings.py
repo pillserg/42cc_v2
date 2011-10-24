@@ -19,7 +19,7 @@ if TEST:
     # in-memory SQLite used for testing
     DATABASES = {
             'default': {
-                'ENGINE': 'django.contrib.gis.db.backends.spatialite',
+                'ENGINE': 'django.db.backends.sqlite3',
                 'NAME': ':memory:',
                 }
             }
@@ -111,3 +111,5 @@ LOGGING = {
         },
     }
 }
+
+TEST_RUNNER = 'tddspry.django.runner.TestSuiteRunner'
