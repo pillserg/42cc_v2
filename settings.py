@@ -26,7 +26,7 @@ else:
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.sqlite3',
-            'NAME': '/home/pill/dev/temp/cc42/sqlite.db',
+            'NAME': os.path.join(os.path.dirname(__file__), 'sqlite.db'),
             'USER': '', 'PASSWORD': '',
             'HOST': '',
             'PORT': '',
@@ -111,4 +111,4 @@ LOGGING = {
     }
 }
 
-TEST_RUNNER = 'tddspry.django.runner.TestSuiteRunner'
+#TEST_RUNNER = 'tddspry.django.runner.TestSuiteRunner'
