@@ -15,8 +15,8 @@ CONTACTS_DICT = dict(name='Sergey',
                      skype='pillserg',
                      other_contacts=('pill.sv0@gmail.com',
                                      'ICQ:289861503'),
-                     bio=('Born in Kiev (1987)',
-                          'Graduated from NAU (2010)',
+                     bio=('Born in Kiev (1987)'
+                          'Graduated from NAU (2010)'
                           'Currently looking for work.'),
                      birthdate=datetime.datetime(1987, 9, 3))
 
@@ -26,10 +26,9 @@ JD_CONTACTS_DICT = dict(name='John',
                         email='someone0@gmail.com',
                         jabber='somejab@jabber.com',
                         skype='someskypeid',
-                        other_contacts=('blah\n',
-                                        'blah2'),
-                        bio=('Unknown\n'),
-                        birthdate=datetime.datetime(1988, 9, 3))
+                        other_contacts='blah2',
+                        bio='Unknown\n',
+                        birthdate=datetime.date(1987, 9, 3))
 
 
 class TestUserDetailCRUD(DatabaseTestCase):
@@ -48,7 +47,7 @@ class TestUserDetailCRUD(DatabaseTestCase):
 
     def test_read(self):
         user_detail = self.create_test_user_detail()
-        self.assert_read(UserDetail, user_detail.pk)
+        self.assert_read(UserDetail, pk=user_detail.pk)
 
     def test_update(self):
         user_detail = self.create_test_user_detail()
@@ -59,9 +58,9 @@ class TestUserDetailCRUD(DatabaseTestCase):
         self.assert_delete(user_detail)
 
 
-#class TestContactsPage(HttpTestCase):
-#
-#    def test_ContactPage(self):
-#        self.go200(reverse('main_page'))
-#        for value in CONTACTS_DICT.values():
-#            self.find(value)
+class TestContactsPage(HttpTestCase):
+
+    def test_ContactPage(self):
+        self.go(reverse('main_page'))
+        for value in CONTACTS_DICT.values():
+            self.assertTrue(self.find(value))

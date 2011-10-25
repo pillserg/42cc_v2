@@ -95,7 +95,7 @@ INSTALLED_APPS = (
 
 LOGGING = {
     'version': 1,
-    'disable_existing_loggers': False,
+    'disable_existing_loggers': True,
     'handlers': {
         'mail_admins': {
             'level': 'ERROR',
@@ -112,3 +112,7 @@ LOGGING = {
 }
 
 #TEST_RUNNER = 'tddspry.django.runner.TestSuiteRunner'
+
+import logging
+
+logging.disable(logging.CRITICAL)
