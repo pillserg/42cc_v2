@@ -8,10 +8,23 @@ from tddspry import NoseTestCase
 
 from contacts.models import UserDetail
 
-CONTACTS_DICT = dict(name='Sergey',
+ORIG_CONTACTS_DICT = dict(name='Sergey',
                      last_name='Pilyavskiy',
                      email='pill.sv0@gmail.com',
                      jabber='pillserg@jabber.com',
+                     skype='pillserg',
+                     other_contacts=('pill.sv0@gmail.com',
+                                     'ICQ:289861503'),
+                     bio=('Born in Kiev (1987)'
+                          'Graduated from NAU (2010)'
+                          'Currently looking for work.'),
+                     birthdate=datetime.datetime(1987, 9, 3))
+
+
+CONTACTS_DICT = dict(name='Sergey',
+                     last_name='Pilyavskiy',
+                     email='pill.sv0test@gmail.com',
+                     jabber='pillsergtest@jabber.com',
                      skype='pillserg',
                      other_contacts=('pill.sv0@gmail.com',
                                      'ICQ:289861503'),
@@ -62,5 +75,8 @@ class TestContactsPage(HttpTestCase):
 
     def test_ContactPage(self):
         self.go(reverse('main_page'))
-        for value in CONTACTS_DICT.values():
-            self.assertTrue(self.find(value))
+        for value in ORIG_CONTACTS_DICT.values():
+            if type(value) == type(''):
+                value = value.replace('(', '\(').replace(')', '\)')
+                self.find(value)
+

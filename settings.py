@@ -6,6 +6,14 @@ import os
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
+PROJECT_PATH = os.path.dirname(__file__)
+
+def join_with_proj_path(part_path):
+    return os.path.join(PROJECT_PATH, part_path)
+
+
+
+
 ADMINS = (
           ('admin', 'admin@admin.com'),
 )
@@ -39,7 +47,7 @@ LANGUAGE_CODE = 'en-us'
 SITE_ID = 1
 USE_I18N = True
 USE_L10N = True
-MEDIA_ROOT = os.path.join(os.path.dirname(__file__), 'media')
+MEDIA_ROOT = join_with_proj_path('media')
 MEDIA_URL = ''
 STATIC_ROOT = ''
 STATIC_URL = '/static/'
@@ -77,7 +85,7 @@ MIDDLEWARE_CLASSES = (
 ROOT_URLCONF = 'cc42_v2.urls'
 
 TEMPLATE_DIRS = (
-    os.path.join(os.path.dirname(__file__), 'templates'),
+    join_with_proj_path('templates'),
 )
 
 INSTALLED_APPS = (
@@ -111,6 +119,10 @@ LOGGING = {
     }
 }
 
+FIXTURE_DIRS = (
+   join_with_proj_path('fixtures'),
+   join_with_proj_path('contacts/fixtures'),
+)
 #TEST_RUNNER = 'tddspry.django.runner.TestSuiteRunner'
 
 import logging

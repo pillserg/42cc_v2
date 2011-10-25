@@ -1,0 +1,14 @@
+[{
+    "pk": 1,
+    "model": "contacts.userdetail",
+    "fields": {
+        "bio": "Born in Kiev (1987)Graduated from NAU (2010)Currently looking for work.",
+        "last_name": "Pilyavskiy",
+        "name": "Sergey",
+        "jabber": "pillserg@jabber.com",
+        "birthdate": "1987-09-03",
+        "skype": "pillserg",
+        "other_contacts": "('pill.sv0@gmail.com', 'ICQ:289861503')",
+        "email": "pill.sv0@gmail.com"
+    }
+}]
