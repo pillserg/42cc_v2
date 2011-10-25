@@ -29,38 +29,37 @@ JD_CONTACTS_DICT = dict(name='John',
                         bio=('Unknown\n'),
                         birthdate=datetime.datetime(1988, 9, 3))
 
-class TestUserDetailCRUD(DatabaseTestCase):    
+
+class TestUserDetailCRUD(DatabaseTestCase):
     """
     CRUD test for UserDetail model
     fields: name, last_name, email, jabber, skype,
             other_contacts, bio, birthdate
     """
-    
+
     def create_test_user_detail(self):
         user_detail = UserDetail.create(**CONTACTS_DICT)
         return user_detail
-    
+
     def test_create(self):
         self.assert_create(UserDetail, **CONTACTS_DICT)
-    
+
     def test_read(self):
         user_detail = self.create_test_user_detail()
         self.assert_read(UserDetail, user_detail.pk)
-    
+
     def test_update(self):
         user_detail = self.create_test_user_detail()
         self.assert_update(user_detail, **JD_CONTACTS_DICT)
-    
+
     def test_delete(self):
         user_detail = self.create_test_user_detail()
         self.assert_delete(user_detail)
-    
-    
+
 
 class TestContactsPage(HttpTestCase):
-    
+
     def test_ContactPage(self):
         self.go200(reverse('main_page'))
         for value in CONTACTS_DICT.values():
             self.find(value)
-        

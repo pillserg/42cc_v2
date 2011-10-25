@@ -14,7 +14,6 @@ MANAGERS = ADMINS
 
 TEST = 'test' in sys.argv
 
-
 if TEST:
     # in-memory SQLite used for testing
     DATABASES = {
@@ -26,12 +25,11 @@ if TEST:
 else:
     DATABASES = {
         'default': {
-            'ENGINE': 'django.db.backends.sqlite3', # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
-            'NAME': '/home/pill/dev/temp/cc42/sqlite.db',                      # Or path to database file if using sqlite3.
-            'USER': '',                      # Not used with sqlite3.
-            'PASSWORD': '',                  # Not used with sqlite3.
-            'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
-            'PORT': '',                      # Set to empty string for default. Not used with sqlite3.
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': '/home/pill/dev/temp/cc42/sqlite.db',
+            'USER': '', 'PASSWORD': '',
+            'HOST': '',
+            'PORT': '',
         }
     }
 
@@ -62,6 +60,7 @@ STATICFILES_FINDERS = (
 )
 
 SECRET_KEY = 'l+b28zbkg3=h*s1@iv0kd=3$v-skjd#u2ogy(gnupg9x$&-1we'
+
 TEMPLATE_LOADERS = (
     'django.template.loaders.filesystem.Loader',
     'django.template.loaders.app_directories.Loader',
