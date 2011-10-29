@@ -1,0 +1,6 @@
+{% extends 'base.html' %}
+{% block content %}
+{% for req in object_list%}
+	<div class="request"><p title="{{ req.get_full_html_description }}">{{ req }}</p></div>
+{% endfor %}
+{% endblock %}

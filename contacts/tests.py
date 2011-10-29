@@ -77,7 +77,7 @@ class TestContactsPage(HttpTestCase):
     """
 
     def test_ContactPage(self):
-        self.go(reverse('main_page'))
+        self.go(reverse('main-page'))
         for value in ORIG_CONTACTS_DICT.values():
             if type(value) == type(''):
                 value = value.replace('(', '\(').replace(')', '\)')

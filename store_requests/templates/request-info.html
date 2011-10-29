@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<p>path: {{request.path}}</p>
+<p>host: {{request.get_host}}</p>
+{% for k,v in request.META.items %}
+<p>{{k}}:{{v}}</p>
+{% endfor %}
+{% endblock %}
+
