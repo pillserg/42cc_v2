@@ -29,8 +29,6 @@
                 	<li><a href="{% url main-page %}" class="menu">Contacts</a></li> |
                 	<li><a href="{% url last-requests %}" class="menu">Last requests</a></li>
                 </ul>
-            	{% block extra_menu %}
-            	{% endblock %}
             {% endblock %}
         </div>
         
@@ -43,6 +41,12 @@
 
     </div>
     </body>
+{% endblock %}
+
+{% block footer %}
+	<div id="footer">
+		<p>current project timezone: {{ settings.TIME_ZONE }}</p>
+	</div>
 {% endblock %}
 
 </html>

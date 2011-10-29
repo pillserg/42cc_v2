@@ -186,3 +186,14 @@ a.menu {
 a:hover {
     text-decoration: underline;
 }
+
+#footer {
+	font-size: 8px;
+	color: white;
+	width: 800px;
+	margin-top: 10px;
+	margin-left: auto;
+	margin-right: auto;
+	padding: 5px;
+}
+}
