@@ -2,11 +2,17 @@ import datetime
 
 from django.conf import settings
 from django.core.urlresolvers import reverse
+from django.test.client import Client
 
-from tddspry.django import HttpTestCase, DatabaseTestCase
+from tddspry.django import HttpTestCase, DatabaseTestCase, TestCase
 from tddspry import NoseTestCase
 
+import twill
+
 from contacts.models import UserDetail
+
+USERNAME = 'admin'
+PASSWORD = 'admin'
 
 ORIG_CONTACTS_DICT = dict(name=u'Sergey',
                      last_name=u'Pilyavskiy',
@@ -76,7 +82,7 @@ class TestContactsPage(HttpTestCase):
     Contacts data must be present on main page
     """
 
-    def test_ContactPage(self):
+    def test_contact_page(self):
         self.go(reverse('main-page'))
         for value in ORIG_CONTACTS_DICT.values():
             if type(value) == type(''):
@@ -86,3 +92,41 @@ class TestContactsPage(HttpTestCase):
             else:
                 continue
             self.find(value)
+
+class TestEditPage(TestCase):
+    """
+    login required
+    contacts data must be editable
+    """
+    def test_edit_page_200(self):
+        self.go200(reverse('edit-contacts'))
+
+    def test_edit_form_initial(self):
+        self.go(reverse('edit-contacts'))
+        for value in ORIG_CONTACTS_DICT.values():
+            if type(value) == type(''):
+                value = value.replace('(', '\(').replace(')', '\)')
+            elif type(value) == type(datetime.datetime.now()):
+                value = value.strftime('%Y-%m-%d')
+            else:
+                continue
+            self.find(value)
+
+    def test_data_is_editable_and_saved_to_db(self):
+        self.go(reverse('edit-contacts'))
+        self.login(USERNAME, PASSWORD)
+        for k, v in JD_CONTACTS_DICT:
+            self.fv('1', k, v)
+        user_detail = UserDetail.objects.get(**JD_CONTACTS_DICT)
+        self.assert_read(UserDetail, **JD_CONTACTS_DICT_)
+
+    def test_login_required_to_access_edit_page(self):
+        # Could not find how to get assertRedirects in tddspry
+        # thus simple client test
+        c = Client()
+        response = c.get(reverse('edit-contacts'))
+        self.assertRedirects(response, settings.LOGIN_REDIRECT_URL)
+
+
+
+
