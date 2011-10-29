@@ -1,10 +1,30 @@
 import datetime
 
 from django.db import models
-
-# Create your models here.
-
 from django.contrib.auth.models import User
+
+class CustomManager(models.Manager):
+    """
+    Adds get_or_none and get_firs_or_none method to objects,
+    raises Exception if multiple objects returned
+    """
+
+    def get_or_none(self, **kwargs):
+        try:
+            return self.get(**kwargs)
+        except self.model.DoesNotExist:
+            return None
+
+    def get_first_or_none(self, **kwargs):
+        """
+        Something like this can be achived by latest() qs method
+        but this feels more flexible
+        """
+        qset = self.filter(**kwargs)
+        try:
+            return qset[0]
+        except IndexError:
+            return None
 
 class StoredRequest(models.Model):
     """
@@ -25,6 +45,8 @@ class StoredRequest(models.Model):
     is_secure = models.BooleanField()
 
     user = models.ForeignKey(User, blank=True, null=True)
+
+    objects = CustomManager()
 
     class Meta:
         verbose_name = 'stored request'

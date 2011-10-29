@@ -80,3 +80,20 @@ class TestStoredRequestCRUD(DatabaseTestCase):
         stored_request = StoredRequest.objects.create(**parsed_request)
         self.assert_delete(stored_request)
 
+
+class TestRealRequestsMustBeSaved(HttpTestCase):
+    def test_200(self):
+        self.go200(reverse('last-requests'))
+
+    def test_twill_request_is_saved_to_db(self):
+        self.assert_count(StoredRequest, 0)
+        self.go(reverse('main-page'))
+        self.assert_count(StoredRequest, 1)
+
+    def test_last_requests_is_present_on_page(self, num_requests=10):
+        for i in xrange(num_requests):
+            self.go(reverse('main-page'))
+        self.assert_count(StoredRequest, num_requests)
+        self.go(reverse('last-requests'))
+        self.find('<div class="request">', count=num_requests)
+
