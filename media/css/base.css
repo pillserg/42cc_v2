@@ -17,10 +17,6 @@ a:link, a:visited {
     text-decoration: none;
 }
 
-a:hover {
-    color: #036;
-}
-
 a img {
     border: none;
 }
@@ -86,6 +82,9 @@ h5 {
 ul li {
     list-style-type: square;
     padding: 1px 0;
+    display:inline;
+    color: white;
+    
 }
 
 ul.plainlist {
@@ -165,8 +164,25 @@ hr {
 #content {
 	background-color: white;
 	width: 800px;
-	margin-top: 20px;
+	margin-top: 5px;
 	margin-left: auto;
 	margin-right: auto;
 	padding: 20px;
+}
+
+#menu {
+	width: 800px;
+	margin-top: 10px;
+	margin-left: auto;
+	margin-right: auto;
+	padding: 5px;
+}
+
+a.menu {
+	color: white;
+	font-size: 14px;
+	text-decoration: none;
+}
+a:hover {
+    text-decoration: underline;
 }

@@ -66,8 +66,16 @@ class StoredRequest(models.Model):
         __unicode__ returns only basic request chars, this will return full
         description.
         """
-        return self.__unicode__()
+        html = ("Request from {} to {} at {}; method: {}; "
+                "User_agent: {}; is_ajax: {}; is_secure: {}; "
+                "language: {}; "
+                "user: {}").format(self.remote_ip, self.path,
+                                   self.time.strftime('%Y-%m-%d %H:%M:%S'),
+                                   self.method, self.user_agent, self.is_ajax,
+                                   self.is_secure, self.language, self.user)
+        return html
+
 
     def __unicode__(self):
-        return "{} {} {} at {}".format(self.remote_ip, self.method, self.path,
+        return '{} {} "{}" at {}'.format(self.remote_ip, self.method, self.path,
                                        self.time.strftime('%Y-%m-%d %H:%M:%S'))
