@@ -176,6 +176,7 @@ hr {
 	margin-left: auto;
 	margin-right: auto;
 	padding: 5px;
+	color: white;
 }
 
 a.menu {
@@ -196,4 +197,32 @@ a:hover {
 	margin-right: auto;
 	padding: 5px;
 }
+
+#header {
+	color: white;
+	width: 800px;
+	margin-top: 10px;
+	margin-left: auto;
+	margin-right: auto;
+	padding-left: 50%;
+	padding-right: 50%;
+}
+
+.login_form_table {
+	width: 600px;
+	margin-top: 10px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+ul.errorlist li {
+	color: red;
+}
+
+.form-field {
+	vertical-align: top;
+}
+
+.with-errors {
+	background: #FFD1DD;
 }

@@ -18,8 +18,13 @@
 
 </head>
 
+
+
 {% block body %}
     <body background="{{STATIC_URL}}pool_table.png">
+    {% block header %}
+    <div id="header"><h2>42 Coffee Cups Test Assignment</h2></div>
+    {% endblock %}
 
     <div id="wrapper">
     	
@@ -27,8 +32,19 @@
             {% block menu %}
                 <ul>
                 	<li><a href="{% url main-page %}" class="menu">Contacts</a></li> |
-                	<li><a href="{% url last-requests %}" class="menu">Last requests</a></li>
+                	<li><a href="{% url last-requests %}" class="menu">Last requests</a></li> |
+                	<li><a href="{% url edit-contacts %}" class="menu">Edit</a></li> 
+                	
+                	<li style="float: right;">
+                	{% if request.user.is_authenticated %}
+                		Logged in as {{ request.user.username }} - <a class="menu" href="{% url logout %}">Logout</a>
+                	{% else %}
+                		<a class="menu" href='{% url login %}'>Login</a></li>
+                	{% endif %}
+                	</li>
                 </ul>
+                
+                
             {% endblock %}
         </div>
         
