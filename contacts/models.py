@@ -21,9 +21,10 @@ class CustomManager(models.Manager):
         except IndexError:
             return None
 
+
 class UserDetail(models.Model):
     """
-    Model representing basic persons contacts 
+    Model representing basic persons contacts
     """
 
     name = models.CharField(max_length=30, verbose_name=_('first name'))
@@ -39,5 +40,3 @@ class UserDetail(models.Model):
 
     def __unicode__(self):
         return ' '.join((self.name, self.last_name))
-
-

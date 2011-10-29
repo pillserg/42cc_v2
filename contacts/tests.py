@@ -8,39 +8,39 @@ from tddspry import NoseTestCase
 
 from contacts.models import UserDetail
 
-ORIG_CONTACTS_DICT = dict(name='Sergey',
-                     last_name='Pilyavskiy',
-                     email='pill.sv0@gmail.com',
-                     jabber='pillserg@jabber.com',
-                     skype='pillserg',
-                     other_contacts=('pill.sv0@gmail.com',
+ORIG_CONTACTS_DICT = dict(name=u'Sergey',
+                     last_name=u'Pilyavskiy',
+                     email=u'pill.sv0@gmail.com',
+                     jabber=u'pillserg@jabber.com',
+                     skype=u'pillserg',
+                     other_contacts=(u'pill.sv0@gmail.com',
                                      'ICQ:289861503'),
-                     bio=('Born in Kiev (1987)'
-                          'Graduated from NAU (2010)'
-                          'Currently looking for work.'),
+                     bio=(u'Born in Kiev (1987)'
+                          u'Graduated from NAU (2010)'
+                          u'Currently looking for work.'),
                      birthdate=datetime.datetime(1987, 9, 3))
 
 
-CONTACTS_DICT = dict(name='Sergey',
-                     last_name='Pilyavskiy',
-                     email='pill.sv0test@gmail.com',
-                     jabber='pillsergtest@jabber.com',
-                     skype='pillserg',
-                     other_contacts=('pill.sv0@gmail.com',
-                                     'ICQ:289861503'),
-                     bio=('Born in Kiev (1987)'
-                          'Graduated from NAU (2010)'
-                          'Currently looking for work.'),
+CONTACTS_DICT = dict(name=u'Sergey',
+                     last_name=u'Pilyavskiy',
+                     email=u'pill.sv0test@gmail.com',
+                     jabber=u'pillsergtest@jabber.com',
+                     skype=u'pillserg',
+                     other_contacts=(u'pill.sv0@gmail.com',
+                                     u'ICQ:289861503'),
+                     bio=(u'Born in Kiev (1987)'
+                          u'Graduated from NAU (2010)'
+                          u'Currently looking for work.'),
                      birthdate=datetime.datetime(1987, 9, 3))
 
 
-JD_CONTACTS_DICT = dict(name='John',
-                        last_name='Dow',
-                        email='someone0@gmail.com',
-                        jabber='somejab@jabber.com',
-                        skype='someskypeid',
-                        other_contacts='blah2',
-                        bio='Unknown\n',
+JD_CONTACTS_DICT = dict(name=u'John',
+                        last_name=u'Dow',
+                        email=u'someone0@gmail.com',
+                        jabber=u'somejab@jabber.com',
+                        skype=u'someskypeid',
+                        other_contacts=u'blah2',
+                        bio=u'Unknown\n',
                         birthdate=datetime.date(1987, 9, 3))
 
 
@@ -72,11 +72,17 @@ class TestUserDetailCRUD(DatabaseTestCase):
 
 
 class TestContactsPage(HttpTestCase):
+    """
+    Contacts data must be present on main page
+    """
 
     def test_ContactPage(self):
         self.go(reverse('main_page'))
         for value in ORIG_CONTACTS_DICT.values():
             if type(value) == type(''):
                 value = value.replace('(', '\(').replace(')', '\)')
-                self.find(value)
-
+            elif type(value) == type(datetime.datetime.now()):
+                value = value.strftime('%Y-%m-%d')
+            else:
+                continue
+            self.find(value)
