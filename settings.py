@@ -78,6 +78,7 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
+    'store_requests.middleware.SaveEveryIncomingRequestToDB',
 )
 
 ROOT_URLCONF = 'cc42_v2.urls'

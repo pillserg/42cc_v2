@@ -54,6 +54,9 @@ class StoredRequest(models.Model):
             user = request.user
         except Exception:
             user = None
+        else:
+            if user.is_anonymous():
+                user = None
 
         parsed_request['user'] = user
         return parsed_request
