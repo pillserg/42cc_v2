@@ -214,4 +214,15 @@ a:hover {
 	margin-left: auto;
 	margin-right: auto;
 }
+
+ul.errorlist li {
+	color: red;
+}
+
+.form-field {
+	vertical-align: top;
+}
+
+.with-errors {
+	background: #FFD1DD;
 }

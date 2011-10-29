@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block extra_head %}
+  {{form.media}}
+{% endblock %}
+
+{% block content %}
+	
+	<form action="." method="post" id="user_profile_edit">{% csrf_token %}
+	{{ form.non_field_errors }} 
+	<table>
+		{% for field in form %}
+			{% if not forloop.counter|divisibleby:2 %}
+				<tr>
+			{% endif %}
+			<td class="form-field">
+				<span  class="{% if field.errors %}with-errors{% endif %}">{{field.label_tag}}</span>: {{ field }}
+				{% if field.errors %}
+					{{ field.errors }}
+				{% else %}
+			</br></br></br>
+				{% endif %}
+			</td>
+			{% if forloop.counter|divisibleby:2 %}
+				</tr>
+			{% endif %}
+
+		{% endfor %} 
+	</table>	
+  	<input type="submit" value="Save" name="Form_save"  /> <a href = {% url main-page %}>Cancel</a></p>
+	</form>
+	
+{% endblock %}

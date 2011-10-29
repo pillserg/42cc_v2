@@ -33,10 +33,11 @@
                 <ul>
                 	<li><a href="{% url main-page %}" class="menu">Contacts</a></li> |
                 	<li><a href="{% url last-requests %}" class="menu">Last requests</a></li> |
+                	<li><a href="{% url edit-contacts %}" class="menu">Edit</a></li> 
                 	
                 	<li style="float: right;">
                 	{% if request.user.is_authenticated %}
-                		{{ request.user.username }} - <a class="menu" href="{% url logout %}">Logout</a>
+                		Logged in as {{ request.user.username }} - <a class="menu" href="{% url logout %}">Logout</a>
                 	{% else %}
                 		<a class="menu" href='{% url login %}'>Login</a></li>
                 	{% endif %}
