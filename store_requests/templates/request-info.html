@@ -3,10 +3,8 @@
 {% block content %}
 <p>path: {{request.path}}</p>
 <p>host: {{request.get_host}}</p>
-<p>HTTP_REFERER: {{request.META.HTTP_REFERER}}</p>
-<p>Content_type: {{request.META.CONTENT_TYPE }}</p>
-
-<p>METHOD: {{request.method}}</p>
-<p>METHOD: {{request.method}}</p>
+{% for k,v in request.META.items %}
+<p>{{k}}:{{v}}</p>
+{% endfor %}
 {% endblock %}
 
