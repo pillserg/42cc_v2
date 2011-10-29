@@ -3,6 +3,7 @@ from django.conf import settings
 
 from models import StoredRequest
 
+
 class SaveEveryIncomingRequestToDB(object):
     def process_request(self, request):
         def _include():
@@ -16,4 +17,3 @@ class SaveEveryIncomingRequestToDB(object):
         if _include():
             parsed_request = StoredRequest.parse_request(request)
             StoredRequest.objects.create(**parsed_request)
-

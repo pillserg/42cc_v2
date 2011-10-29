@@ -3,6 +3,7 @@ import datetime
 from django.db import models
 from django.contrib.auth.models import User
 
+
 class CustomManager(models.Manager):
     """
     Adds get_or_none and get_firs_or_none method to objects,
@@ -26,11 +27,12 @@ class CustomManager(models.Manager):
         except IndexError:
             return None
 
+
 class StoredRequest(models.Model):
     """
     Stored request representation
     """
-    # I've experienced some problems with Ip field in the past, 
+    # I've experienced some problems with Ip field in the past,
     # thus generic CharField must do ok.
     remote_ip = models.CharField(default='undefined', max_length=100)
     path = models.CharField(max_length=155)
@@ -97,7 +99,8 @@ class StoredRequest(models.Model):
                                    self.is_secure, self.language, self.user)
         return html
 
-
     def __unicode__(self):
-        return '{} {} "{}" at {}'.format(self.remote_ip, self.method, self.path,
-                                       self.time.strftime('%Y-%m-%d %H:%M:%S'))
+        return '{} {} "{}" at {}'.format(self.remote_ip, self.method,
+                                         self.path,
+                                         self.time.strftime('%Y-%m-%d'
+                                                            ' %H:%M:%S'))

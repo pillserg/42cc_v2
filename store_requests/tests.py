@@ -14,19 +14,19 @@ from models import StoredRequest
 class RequestFactory(Client):
     """
     Class that lets you create mock Request objects for use in testing.
-    
+
     Usage:
-    
+
     rf = RequestFactory()
     get_request = rf.get('/hello/')
     post_request = rf.post('/submit/', {'foo': 'bar'})
-    
+
     This class re-uses the django.test.client.Client interface, docs here:
     http://www.djangoproject.com/documentation/testing/#the-test-client
-    
-    Once you have a request object you can pass it to any view function, 
+
+    Once you have a request object you can pass it to any view function,
     just as if that view had been hooked up using a URLconf.
-    
+
     """
     def request(self, **request):
         """
@@ -91,9 +91,9 @@ class TestRealRequestsMustBeSaved(HttpTestCase):
         self.assert_count(StoredRequest, 1)
 
     def test_last_requests_is_present_on_page(self, num_requests=10):
+        url = reverse('main-page')
         for i in xrange(num_requests):
-            self.go(reverse('main-page'))
+            self.go(url)
         self.assert_count(StoredRequest, num_requests)
         self.go(reverse('last-requests'))
         self.find('<div class="request">', count=num_requests)
-
