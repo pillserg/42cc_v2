@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <table>
+        <tr>
+            <td>
+                <p>{{user_detail.name}}</p>
+                <p>{{user_detail.last_name}}</p>
+                <p>Born in: {{user_detail.birthdate|date:"Y-m-d"}}</p>
+                <p>{{user_detail.bio}}</p>
+            </td>
+            
+            <td>
+                <p>{{user_detail.user_detail}}</p>
+                <p>Email: {{user_detail.email}}</p>
+                <p>Jabber:{{user_detail.jabber}}</p>
+                <p>Skype: {{user_detail.skype}}</p>
+                <p>Other user_detail: {{user_detail.other_contacts}}</p>
+            </td>
+        </tr>
+    </table>
+{% endblock %}
