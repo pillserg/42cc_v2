@@ -41,7 +41,7 @@ class StoredRequest(models.Model):
             remote_ip=request.META.get('REMOTE_ADDR', 'undefined'),
             method=request.method,
             path=request.path,
-            user_agent=request.META.get('USER_AGENT', 'undefined'),
+            user_agent=request.META.get('HTTP_USER_AGENT', 'undefined'),
             language=request.META.get('LANGUAGE', 'en'),
             referer=request.META.get('HTTP_REFERER '),
             is_ajax=request.is_ajax(),
