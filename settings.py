@@ -130,6 +130,10 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     "context_processors.settings_context_processor"
 )
 
+LOGIN_REDIRECT_URL = '/'
+LOGIN_URL = '/login/'
+LOGOUT_URL = '/'
+
 FIXTURE_DIRS = (
    join_with_proj_path('fixtures'),
    join_with_proj_path('contacts/fixtures'),

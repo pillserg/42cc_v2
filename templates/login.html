@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <form action="." method="post" class="login_form">{% csrf_token %}
+  	<table class="login_form_table">
+  		
+  		<tr>
+  			<td>Username</td>
+  			<td>Password</td>
+  			<td></td>
+    	</tr>
+  		
+  		<tr>
+	  		<td>{{ form.username }}</td>
+	    	<td>{{ form.password }}</td>
+    		<td><button type="submit" name="submit" value="Login">Log in</button></td>
+    	</tr>
+    
+    {% if next %}<input type="hidden" name="next" value="{{ next }}">{% endif %}
+    </table>
+  </form>
+{% endblock %}

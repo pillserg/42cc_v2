@@ -124,7 +124,7 @@ class TestEditPage(TestCase):
         # Could not find how to get assertRedirects in tddspry
         # thus simple client test
         c = Client()
-        response = c.get(reverse('edit-contacts'))
+        response = c.get(reverse('edit-contacts'), follow=True)
         self.assertRedirects(response, settings.LOGIN_REDIRECT_URL)
 
 

@@ -1,6 +1,7 @@
 from django.conf.urls.defaults import patterns, include, url
 
-from views import show_main_page
 
-
-urlpatterns = patterns('', url(r'^$', show_main_page, name='main-page'),)
+urlpatterns = patterns('contacts.views',
+                       url(r'^$', 'show_main_page', name='main-page'),
+                       url(r'^edit/$', 'edit_contacts', name='edit-contacts'),
+                       )
