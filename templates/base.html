@@ -8,7 +8,10 @@
     <meta name="description" content="" />
     
     <title>{%block title%}42cc-test-pill v2{% endblock %}</title>
-    <link rel="stylesheet" href="/static/css/base.css" type="text/css" media="screen, projection" />
+    <link rel="stylesheet" href="{{ STATIC_URL }}css/base.css" type="text/css" media="screen, projection" />
+    <script src="{{ STATIC_URL }}js/jquery-1.6.4.min.js" type="text/javascript"></script>
+    <script src="{{ STATIC_URL }}js/jquery.corner.js" type="text/javascript" ></script>
+    <script src="{{ STATIC_URL }}js/index.js" type="text/javascript" ></script>
     {% block extra_head %}
         
     {% endblock %}
@@ -24,7 +27,7 @@
             content:
         {% endblock %}
     </div>
-    <hr>
+    
         <div id='menu'>
             {% block menu %}
                 
