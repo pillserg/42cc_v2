@@ -9,8 +9,6 @@
 				<span  class="{% if field.errors %}with-errors{% endif %}">{{field.label_tag}}</span>: {{ field }}
 				{% if field.errors %}
 					{{ field.errors }}
-				{% else %}
-			</br></br></br>
 				{% endif %}
 			</td>
 			{% if forloop.counter|divisibleby:2 %}
