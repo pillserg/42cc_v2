@@ -14,7 +14,7 @@ class CalendarWidget(forms.TextInput):
         )
         css = {
             'all': (settings.MEDIA_URL +
-                    "css/smoothness/jquery-ui-1.8.16.custom.css",)}
+                    "css/ui-lightness/jquery-ui-1.8.16.custom.css",)}
 
     def __init__(self, attrs={}):
         """init super widget"""
