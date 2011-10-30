@@ -231,3 +231,31 @@ ul.errorlist li {
 	text-align: center;
 }
 
+.fieldWrapper{
+    text-align: right;
+}
+
+
+td.form-field label {
+	float: left;
+}
+td.form-field textarea {
+	width: 100%;
+}
+
+td.form-field {
+	padding-left: 10px;
+	padding-right: 10px;
+}
+
+
+#form-wrapper{
+	width:700px;
+	margin-top: 20px;
+	margin-left: auto;
+	margin-right: auto;
+	
+}
+#submit_block {
+	
+}
