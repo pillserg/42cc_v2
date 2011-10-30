@@ -4,6 +4,7 @@
 {% endblock %}
 
 {% block content %}
+	
 	<div id="form-wrapper">
 	<form action="." method="post" id="user_profile_edit">{% csrf_token %}
 	{{ form.non_field_errors }} 
@@ -26,7 +27,7 @@
 
 		{% endfor %} 
 	</table>	
-  	<input type="submit" value="Save" name="Form_save"  /> <a href = {% url main-page %}>Cancel</a></p>
+  	<div id="submit_block"><input type="submit" value="Save" name="Form_save"  /> <a href = {% url main-page %}>Cancel</a><img id="ajaxBusy" src="{{STATIC_URL}}images/busy.gif"></p></div>
 	</form>
 	</div>
 	

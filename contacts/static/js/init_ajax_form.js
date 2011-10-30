@@ -1,10 +1,30 @@
-function initDatePicker(){
-  $(document).ready(function() {
-
-  });
-};
-
 $(document).ready(function() {
+	
+	//Indication
+	function initialize_indicator() {
+	  $('#ajaxBusy').css({
+	    display:"none",
+	    margin:"0px",
+	    paddingLeft:"0px",
+	    paddingRight:"0px",
+	    paddingTop:"0px",
+	    paddingBottom:"0px",
+	    float: "right",
+	    width:"auto"
+  		});
+  	};
+	// Ajax activity indicator bound to ajax start/stop document events
+	$(document).ajaxStart(function(){
+	  $('#ajaxBusy').show();
+	}).ajaxStop(function(){
+	  $('#ajaxBusy').hide();
+	});
+	
+	function initialize_datepicker(){
+		$( "#id_birthdate" ).datepicker({ altFormat: 'yy-mm-dd', dateFormat: 'yy-mm-dd' });
+	};
+	
+	
 	
 	function init(){
 
@@ -28,14 +48,18 @@ $(document).ready(function() {
 	        success:		function(){
 	        					toggle_ui(false)
 								init();
+								initialize_indicator();
+								initialize_datepicker();
 							}
 	    };
 	    
-	    $( "#id_birthdate" ).datepicker({ altFormat: 'yy-mm-dd', dateFormat: 'yy-mm-dd' });
+	    
 	    $('#user_profile_edit').ajaxForm(options);
 	};
 	
 	init();
+	initialize_indicator();
+	initialize_datepicker();
     
 });
 
