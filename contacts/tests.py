@@ -151,5 +151,5 @@ class TestEditPage(TestCase):
         self.find('js/jquery.form.js')
 
     def test_reversed_fields_page(self):
-        self.login(USERNAME, PASSWOED)
+        self.login(USERNAME, PASSWORD)
         self.go(reverse('edit-contacts-reverse'))
