@@ -226,3 +226,7 @@ ul.errorlist li {
 .with-errors {
 	background: #FFD1DD;
 }
+
+.pagination {
+	text-align: center;
+}

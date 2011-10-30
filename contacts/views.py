@@ -1,6 +1,7 @@
-from django.http import HttpResponse
-from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
+from django.core.urlresolvers import reverse
+from django.http import HttpResponse, HttpResponseRedirect
+from django.shortcuts import render
 
 from contacts.models import UserDetail
 from contacts.forms import UserDetailForm
@@ -19,4 +20,5 @@ def edit_contacts(request):
     form = UserDetailForm(request.POST or None, instance=user_detail)
     if form.is_valid():
         form.save()
+        return HttpResponseRedirect(reverse('main-page'))
     return render(request, 'edit-contacts.html', locals())

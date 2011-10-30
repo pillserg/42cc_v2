@@ -16,6 +16,7 @@ class CustomManager(models.Manager):
 
     def get_first_or_none(self, **kwargs):
         qset = self.filter(**kwargs)
+
         try:
             return qset[0]
         except IndexError:
