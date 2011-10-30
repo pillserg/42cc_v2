@@ -39,5 +39,4 @@ class UserDetailForm(forms.ModelForm):
             'birthdate',
             'skype',
             'bio',
-            'other_contacts',
-            ]
+            'other_contacts', ]

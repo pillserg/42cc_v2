@@ -14,12 +14,14 @@ def show_main_page(request):
 
 
 @login_required
-def edit_contacts(request, template_name='edit-contacts.html'):
+def edit_contacts(request, template_name='edit-contacts.html', reverse=False):
     if request.is_ajax():
         template_name = 'ajax-edit-contacts.html'
 
     user_detail = UserDetail.objects.get_first_or_none()
     form = UserDetailForm(request.POST or None, instance=user_detail)
+    if reverse:
+        form.fields.keyOrder.reverse()
 
     if form.is_valid():
         form.save()
