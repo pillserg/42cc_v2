@@ -4,21 +4,31 @@
 {% block content %}
     <table>
         <tr>
-            <td>
+            <td class="user_detail">
                 <p>{{user_detail.name}}</p>
                 <p>{{user_detail.last_name}}</p>
-                <p>Born in: {{user_detail.birthdate|date:"Y-m-d"}}</p>
-                <p>{{user_detail.bio}}</p>
+                <p>{{user_detail.birthdate|date:"Y-m-d"}}</p>
             </td>
-            
-            <td>
+            <td class="user_detail">
+            	<p>Contacts:</p>
                 <p>{{user_detail.user_detail}}</p>
                 <p>Email: {{user_detail.email}}</p>
                 <p>Jabber:{{user_detail.jabber}}</p>
                 <p>Skype: {{user_detail.skype}}</p>
-                <p>Other user_detail: {{user_detail.other_contacts}}</p>
             </td>
+            
         </tr>
+        <tr>
+        	<td class="user_detail">
+                <p>Bio:</p>
+                <p>{{user_detail.bio}}</p>
+            </td>
+            
+            <td class="user_detail">
+                <p>Other contacts:</p>
+                <p>{{user_detail.other_contacts}}</p>
+            </td>
+       </tr>
     </table>    
     <hr><br>
 	<a href={% edit_link user_detail %} style="float: right;">edit(admin)</a>

@@ -267,3 +267,8 @@ td.form-field {
 #submit_block {
 	
 }
+
+td.user_detail {
+	width: 400px;
+	vertical-align: top;
+}
