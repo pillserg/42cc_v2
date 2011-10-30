@@ -6,5 +6,11 @@
 {% block content %}
 	<div id="form-wrapper">
 	{% include "ajax-edit-contacts.html" %}
-	</div>
+	</div>	
+    {% if reverse %}
+	<a style="float: right;" href="{% url edit-contacts %}">normal fields order</a>
+	{% else %}
+	<a style="float: right;" href="{% url edit-contacts-reverse %}">reverse fields order</a>
+	{% endif %}
+
 {% endblock %}
