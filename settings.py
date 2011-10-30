@@ -5,13 +5,11 @@ import os
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
-
 PROJECT_PATH = os.path.dirname(__file__)
+
 
 def join_with_proj_path(part_path):
     return os.path.join(PROJECT_PATH, part_path)
-
-
 
 
 ADMINS = (
