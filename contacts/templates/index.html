@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
+{% load extra_tags %}
 
-{% autoescape off %}
 {% block content %}
     <table>
         <tr>
@@ -19,6 +19,8 @@
                 <p>Other user_detail: {{user_detail.other_contacts}}</p>
             </td>
         </tr>
-    </table>
+    </table>    
+    
+	<a href={% edit_link user_detail %} style="float: right;">edit(admin)</a>
 {% endblock %}
-{% endautoescape %}
+

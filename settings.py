@@ -96,6 +96,7 @@ INSTALLED_APPS = (
     'django.contrib.admindocs',
     'contacts',
     'store_requests',
+    'templatelib',
 )
 
 
