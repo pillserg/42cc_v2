@@ -98,6 +98,7 @@ INSTALLED_APPS = (
     'store_requests',
     'templatelib',
     'extra_commands',
+    'model_spectator',
 )
 
 

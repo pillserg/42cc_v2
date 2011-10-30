@@ -13,3 +13,10 @@ class ModelChange(models.Model):
 
     event = models.IntegerField(choices=event_choices)
 
+    def __unicode__(self):
+        return "{} {} {} {} {}".format(self.timestamp.isoformat(),
+                                    self.get_event_display(),
+                                    self.content_type.app_label,
+                                    self.content_type.name,
+                                    self.model_pk)
+
