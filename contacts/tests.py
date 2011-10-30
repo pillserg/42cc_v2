@@ -143,3 +143,9 @@ class TestEditPage(TestCase):
         self.submit()
         self.find('This field is required')
         self.find('Enter a valid date.')
+
+    def test_ajax(self):
+        # Just test presence of jquery.forms lib for now
+        self.login(USERNAME, PASSWORD)
+        self.go(reverse('edit-contacts'))
+        self.find('js/jquery.form.js')
