@@ -14,11 +14,14 @@ def show_main_page(request):
 
 
 @login_required
-def edit_contacts(request):
+def edit_contacts(request, template_name='edit-contacts.html'):
+    if request.is_ajax():
+        template_name = 'ajax-edit-contacts.html'
+
     user_detail = UserDetail.objects.get_first_or_none()
-    assert user_detail
     form = UserDetailForm(request.POST or None, instance=user_detail)
+
     if form.is_valid():
         form.save()
-        return HttpResponseRedirect(reverse('main-page'))
-    return render(request, 'edit-contacts.html', locals())
+
+    return render(request, template_name, locals())
