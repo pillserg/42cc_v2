@@ -10,7 +10,7 @@ register = template.Library()
 @register.simple_tag
 def edit_link(obj):
     """
-    getting parts from obj.__class__ and 
+    getting parts from obj.__class__ and
     constructing url to admin page for this object
     """
 
