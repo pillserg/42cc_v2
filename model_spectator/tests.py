@@ -22,6 +22,7 @@ model_change_test_obj = dict(
                             event=1
                             )
 
+
 class TestModelChangeCRUD(DatabaseTestCase):
 
     def make_obj(self):
@@ -61,4 +62,3 @@ class TestModelChangeCRUD(DatabaseTestCase):
         self.assert_count(ModelChange, prev_num + 1)
         model_change = ModelChange.objects.latest()
         self.assertEqual(3, model_change.event, 'event type is wrong')
-
