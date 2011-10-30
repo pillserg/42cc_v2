@@ -97,6 +97,7 @@ INSTALLED_APPS = (
     'contacts',
     'store_requests',
     'templatelib',
+    'extra_commands',
 )
 
 

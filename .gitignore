@@ -5,3 +5,4 @@ cover
 *.pyc
 *.db
 *.log
+*.dat

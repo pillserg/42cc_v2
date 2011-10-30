@@ -188,6 +188,14 @@ a:hover {
     text-decoration: underline;
 }
 
+h2 a:hover{
+	text-decoration: none;
+}
+
+h2 a:link, h2 a:visited {
+    color: white;
+    
+}
 #footer {
 	font-size: 8px;
 	color: white;
