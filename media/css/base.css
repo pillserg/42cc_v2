@@ -212,8 +212,18 @@ h2 a:link, h2 a:visited {
 	margin-top: 10px;
 	margin-left: auto;
 	margin-right: auto;
-	padding-left: 50%;
-	padding-right: 50%;
+	
+}
+
+
+#header h2 {
+	width: 800px;
+	float:right;
+	margin-top: 10px;
+	margin-left: auto;
+	margin-right: auto;
+	padding-left: 60%;
+	
 }
 
 .login_form_table {
