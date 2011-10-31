@@ -11,6 +11,10 @@ from tddspry import NoseTestCase
 from models import StoredRequest
 
 
+USERNAME = 'admin'
+PASSWORD = 'admin'
+
+
 class RequestFactory(Client):
     """
     Class that lets you create mock Request objects for use in testing.
@@ -97,3 +101,12 @@ class TestRealRequestsMustBeSaved(HttpTestCase):
         self.assert_count(StoredRequest, num_requests)
         self.go(reverse('last-requests'))
         self.find('<div class="request">', count=num_requests)
+
+    def test_priority(self):
+        self.go(reverse('main-page'))
+        self.login_to_admin(USERNAME, PASSWORD)
+        self.go(reverse('edit'))
+        self.go(reverse('last-requests'))
+        # Could not go on with TDD here
+        # will write tests afterwards
+

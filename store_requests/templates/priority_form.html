@@ -1,0 +1,20 @@
+<form action="{% url set-request-priority form.id%}" method="post" class="set-priority-form">
+	{% csrf_token %}
+  	<div>
+  		<table class="priority-change-form">
+  		<tr>
+  			<td>{{ form.priority.label_tag }}</td> <td>ip</td> <td>&</td> <td>path</td>
+  		</tr>
+  		<tr>
+  			<td>{{ form.priority }}</td> <td>{{ form.for_all_by_ip }}</td> <td>{{ form._and }}</td> <td>{{ form.for_all_by_path }}</td>
+  		</tr>
+  		<tr>
+  			<td colspan="3">{{ form.priority.errors }}</td>
+  		</tr>
+  		<tr>
+  			<td colspan="3" align="center"><input type="submit" value="Done"/></td>
+  		</tr>
+  		</table>
+  		
+  	</div>
+</form>
