@@ -15,12 +15,24 @@
 	    	<td>{{ form.password }}</td>
     		<td><button type="submit" name="submit" value="Login">Log in</button></td>
     	</tr>
+    	
+    	<tr>
+    		<td>
+    			{% if form.username.errors %} {{ form.username.errors }} {% endif %}
+    		</td>
+    		<td>
+    			{% if form.password.errors %} {{ form.username.errors }} {% endif %}
+    		</td>
+    		
+    	</tr>
+    	
+    	
     
     {% if next %}<input type="hidden" name="next" value="{{ next }}">{% endif %}
     <tr>
     	<td colspan="3">
 			{% if form.errors %}
-				{{form.non_field_errors}}
+				{{ form.non_field_errors }}
 			{% endif %}
     	</td>
     </tr>
