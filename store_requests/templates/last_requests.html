@@ -1,7 +1,36 @@
 {% extends 'base.html' %}
+
+{% block extra_head %}
+<script src="{{ STATIC_URL }}js/jquery-ui-1.8.16.custom.min.js" type="text/javascript"></script>
+<script src="{{ STATIC_URL }}js/init_set_priority.js" type="text/javascript"></script>
+<script src="{{ STATIC_URL }}js/jquery.form.js" type="text/javascript"></script>
+<link rel="stylesheet" href="{{ STATIC_URL }}css/ui-lightness/jquery-ui-1.8.16.custom.css" type="text/css" media="screen, projection" />
+{% endblock %}
+
 {% block content %}
+
+
+<div id="dialog" title="Set Priority"></div>
+
+<div "sort">
+	{% if sort_by_priority %}
+		<a href="{% url last-requests %}">Sort By Time</a>
+	{% else %}
+		<a href="{% url last-requests-by-priority %}">Sort By Priority</a>
+	{% endif %}
+</div>
+
+</br>
+
 {% for req in object_list%}
-	<div class="request"><p title="{{ req.get_full_html_description }}">{{ req }}</p></div>
+	<div class="request">
+			<form action="{% url set-request-priority req.id%}"
+				  method="GET" class="get-priority-form" 
+				  title="{{ req.get_full_html_description }}">
+				{{ req }}
+				<input class="priority_set" type="submit" value="Set Priority"/>
+			</form>
+	</div>
 	<hr>
 {% endfor %}
 

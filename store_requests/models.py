@@ -48,6 +48,8 @@ class StoredRequest(models.Model):
 
     user = models.ForeignKey(User, blank=True, null=True)
 
+    priority = models.IntegerField(default=1)
+
     objects = CustomManager()
 
     class Meta:
@@ -92,15 +94,16 @@ class StoredRequest(models.Model):
         """
         html = ("Request from {} to {} at {}; method: {}; "
                 "User_agent: {}; is_ajax: {}; is_secure: {}; "
-                "language: {}; "
-                "user: {}").format(self.remote_ip, self.path,
+                "language: {}; user: {}; "
+                "").format(self.remote_ip, self.path,
                                    self.time.strftime('%Y-%m-%d %H:%M:%S'),
                                    self.method, self.user_agent, self.is_ajax,
-                                   self.is_secure, self.language, self.user)
+                                   self.is_secure, self.language, self.user,
+                                   )
         return html
 
     def __unicode__(self):
-        return '{} {} "{}" at {}'.format(self.remote_ip, self.method,
-                                         self.path,
-                                         self.time.strftime('%Y-%m-%d'
-                                                            ' %H:%M:%S'))
+        return '{} {} "{}" at {} pr: {}'.format(self.remote_ip, self.method,
+                                                self.path,
+                                                self.time.isoformat(),
+                                                self.priority)

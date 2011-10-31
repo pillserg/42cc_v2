@@ -212,8 +212,18 @@ h2 a:link, h2 a:visited {
 	margin-top: 10px;
 	margin-left: auto;
 	margin-right: auto;
-	padding-left: 50%;
-	padding-right: 50%;
+	
+}
+
+
+#header h2 {
+	width: 800px;
+	float:right;
+	margin-top: 10px;
+	margin-left: auto;
+	margin-right: auto;
+	padding-left: 60%;
+	
 }
 
 .login_form_table {
@@ -272,3 +282,18 @@ td.user_detail {
 	width: 400px;
 	vertical-align: top;
 }
+
+.priority_set {
+	float: right;
+}
+
+#id_priority{
+	width: 30px;
+}
+.priority-change-form tr td {
+	text-align: center;
+	width: 140px;
+	padding-left:10px;
+	padding-right:10px;
+}
+
