@@ -127,4 +127,3 @@ class TestRealRequestsMustBeSaved(HttpTestCase):
         self.submit200()
         self.go(self.go(reverse('last-requests-by-priority')))
         self.find('999', count=StoredRequest.objects.all().count() - 1)
-

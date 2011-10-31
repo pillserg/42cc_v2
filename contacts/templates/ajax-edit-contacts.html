@@ -8,7 +8,10 @@
 			{% endif %}
 			<td class="form-field">
 				<div class="fieldWrapper">
-				<span  class="{% if field.errors %}with-errors{% endif %}">{{field.label_tag}}</span> {{ field }}
+				<span  class="{% if field.errors %}with-errors{% endif %}">
+					{{field.label_tag}}
+				</span>
+				{{ field }}
 				{% if field.errors %}
 					{{ field.errors }}
 				{% endif %}

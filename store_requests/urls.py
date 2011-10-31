@@ -20,9 +20,5 @@ urlpatterns = patterns('',
 
     url(r'^set_priority/(\d+)$', 'store_requests.views.set_request_priority',
         name='set-request-priority'),
-    url(r'^ips$', 'store_requests.views.get_ips'),
-    url(r'^paths$', 'store_requests.views.get_paths'),
 
 )
-
-

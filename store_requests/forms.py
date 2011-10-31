@@ -19,7 +19,6 @@ class PriorityChangeForm(forms.Form):
         self.id = id
         self.fields['priority'].initial = req.priority
 
-
     def save(self):
         if all((self.cleaned_data['for_all_by_ip'],
                 self.cleaned_data['bool_and'],
@@ -40,4 +39,3 @@ class PriorityChangeForm(forms.Form):
             return
 
         qs.update(priority=self.cleaned_data['priority'])
-
