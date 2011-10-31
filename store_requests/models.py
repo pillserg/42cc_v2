@@ -27,6 +27,12 @@ class CustomManager(models.Manager):
         except IndexError:
             return None
 
+    def update_priority_by_ip(self, ip, priority=1):
+        self.filter(remote_ip=ip).update(priority=priority)
+
+    def update_priority_by_path(self, path, priority=1):
+        self.filter(path=path).update(priority=priority)
+
 
 class StoredRequest(models.Model):
     """
@@ -47,6 +53,10 @@ class StoredRequest(models.Model):
     is_secure = models.BooleanField()
 
     user = models.ForeignKey(User, blank=True, null=True)
+
+    priority = models.IntegerField(default=1)
+    ip_priority = models.IntegerField(default=0)
+    path_priority = models.IntegerField(default=0)
 
     objects = CustomManager()
 

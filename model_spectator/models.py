@@ -43,9 +43,6 @@ def add_db_entry_on_model_change(sender, instance, **kwargs):
     convertor = {True: 1, False: 2, 3: 3}
     event = convertor[kwargs.get('created', 3)]
     content_type = ContentType.objects.get_for_model(sender)
-    print instance.pk
-    print content_type
-    print event
 
     ModelChange.objects.create(content_type=content_type,
                                model_pk=instance.pk,
