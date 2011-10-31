@@ -102,11 +102,29 @@ class TestRealRequestsMustBeSaved(HttpTestCase):
         self.go(reverse('last-requests'))
         self.find('<div class="request">', count=num_requests)
 
-    def test_priority(self):
+    def test_priority_page(self):
+        self.go200(reverse('last-requests-by-priority'))
+
+    def test_upd_priority_form(self):
         self.go(reverse('main-page'))
         self.login_to_admin(USERNAME, PASSWORD)
-        self.go(reverse('edit'))
-        self.go(reverse('last-requests'))
-        # Could not go on with TDD here
-        # will write tests afterwards
+        self.go(reverse('edit-contacts'))
+        sr = StoredRequest.objects.get_first_or_none()
+        self.go(reverse('set-request-priority', args=(sr.pk,)))
+        self.fv('1', 'priority', '999')
+        self.submit200()
+        self.go(reverse('last-requests-by-priority'))
+        self.find('999')
+
+    def test_mass_upd_priority(self):
+        self.go(reverse('main-page'))
+        self.login_to_admin(USERNAME, PASSWORD)
+        self.go(reverse('edit-contacts'))
+        sr = StoredRequest.objects.get_first_or_none()
+        self.go(reverse('set-request-priority', args=(sr.pk,)))
+        self.fv('1', 'priority', '999')
+        self.fv('1', 'for_all_by_ip', '1')
+        self.submit200()
+        self.go(self.go(reverse('last-requests-by-priority')))
+        self.find('999', count=StoredRequest.objects.all().count() - 1)
 
