@@ -1,10 +1,6 @@
 # Create your views here.
-from django.core.urlresolvers import reverse
-from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
-from django.utils import simplejson
 
-from models import StoredRequest
 from forms import PriorityChangeForm
 
 

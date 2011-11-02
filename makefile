@@ -1,4 +1,4 @@
 all:test
 
 test:
-		django-nosetests.py 
+		django-nosetests.py -v

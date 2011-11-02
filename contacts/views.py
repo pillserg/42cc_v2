@@ -1,6 +1,4 @@
 from django.contrib.auth.decorators import login_required
-from django.core.urlresolvers import reverse
-from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
 
 from contacts.models import UserDetail
@@ -9,7 +7,6 @@ from contacts.forms import UserDetailForm
 
 def show_main_page(request):
     user_detail = UserDetail.objects.get_first_or_none()
-    assert user_detail
     return render(request, 'index.html', {'user_detail': user_detail})
 
 
