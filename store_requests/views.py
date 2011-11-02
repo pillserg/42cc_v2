@@ -1,11 +1,6 @@
-# Create your views here.
 from django.shortcuts import render
 
 from forms import PriorityChangeForm
-
-
-def show_request_info(request):
-    return render(request, 'request-info.html')
 
 
 def set_request_priority(request, id):
