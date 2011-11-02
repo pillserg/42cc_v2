@@ -79,7 +79,7 @@ MIDDLEWARE_CLASSES = (
     'store_requests.middleware.SaveEveryIncomingRequestToDB',
 )
 
-ROOT_URLCONF = 'cc42_v2.urls'
+ROOT_URLCONF = 'urls'
 
 TEMPLATE_DIRS = (
     join_with_proj_path('templates'),
