@@ -1,6 +1,5 @@
-from django.conf.urls.defaults import patterns, include, url
+from django.conf.urls.defaults import patterns, url
 
-from views import show_request_info
 from models import StoredRequest
 
 

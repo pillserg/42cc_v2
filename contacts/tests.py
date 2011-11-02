@@ -1,17 +1,13 @@
 import datetime
 import copy
 
-
-from django.conf import settings
 from django.core.urlresolvers import reverse
 from django.test.client import Client
 
 from tddspry.django import HttpTestCase, DatabaseTestCase, TestCase
-from tddspry import NoseTestCase
-
-import twill
 
 from contacts.models import UserDetail
+
 
 USERNAME = 'admin'
 PASSWORD = 'admin'
@@ -123,10 +119,8 @@ class TestEditPage(TestCase):
         self.login(USERNAME, PASSWORD)
         self.go(reverse('edit-contacts'))
         [self.fv('1', k, v) for k, v in JD_CONTACTS_DICT.items()]
-
         self.submit200()
-
-        user_detail = UserDetail.objects.get(name=JD_CONTACTS_DICT['name'])
+        self.assert_read(UserDetail, **JD_CONTACTS_DICT)
 
     def test_login_required_to_access_edit_page(self):
         # Could not find how to get assertRedirects in tddspry
@@ -162,4 +156,3 @@ class TestEditPage(TestCase):
     def test_reversed_fields_page(self):
         self.login(USERNAME, PASSWORD)
         self.go(reverse('edit-contacts-reverse'))
-

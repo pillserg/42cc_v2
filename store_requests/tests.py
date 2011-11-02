@@ -1,12 +1,8 @@
-import datetime
-
-from django.conf import settings
 from django.core.urlresolvers import reverse
 from django.test import Client
 from django.core.handlers.wsgi import WSGIRequest
 
 from tddspry.django import HttpTestCase, DatabaseTestCase
-from tddspry import NoseTestCase
 
 from models import StoredRequest
 
