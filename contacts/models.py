@@ -41,8 +41,6 @@ class UserDetail(models.Model):
     other_contacts = models.TextField(verbose_name=_('additional contacts'),
                                       blank=True, null=True)
 
-
-
     objects = CustomManager()
 
     def __unicode__(self):
