@@ -30,6 +30,9 @@ class UserDetail(models.Model):
 
     name = models.CharField(max_length=30, verbose_name=_('first name'))
     last_name = models.CharField(max_length=100, verbose_name=_('last name'))
+    birthdate = models.DateField(verbose_name=_('birthdate'))
+    bio = models.TextField(verbose_name=_('biography'))
+
     email = models.EmailField(unique=True, verbose_name='email')
     jabber = models.EmailField(unique=True, verbose_name=_('jabber'),
                                blank=True, null=True)
@@ -37,8 +40,8 @@ class UserDetail(models.Model):
                              blank=True, null=True)
     other_contacts = models.TextField(verbose_name=_('additional contacts'),
                                       blank=True, null=True)
-    bio = models.TextField(verbose_name=_('biography'))
-    birthdate = models.DateField(verbose_name=_('birthdate'))
+
+
 
     objects = CustomManager()
 
