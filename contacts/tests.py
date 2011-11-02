@@ -7,7 +7,7 @@ from django.test.client import Client
 from tddspry.django import HttpTestCase, DatabaseTestCase, TestCase
 
 from contacts.models import UserDetail
-
+from contacts.forms import UserDetailForm
 
 USERNAME = 'admin'
 PASSWORD = 'admin'
@@ -156,3 +156,11 @@ class TestEditPage(TestCase):
     def test_reversed_fields_page(self):
         self.login(USERNAME, PASSWORD)
         self.go(reverse('edit-contacts-reverse'))
+        f = UserDetailForm()
+        f.fields.keyOrder.reverse()
+        fields = f.fields.keys()
+        regexp = '.+'.join(['id="id_' + f + '"' for f in fields])
+        self.find(regexp, flags="s")
+
+
+
