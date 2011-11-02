@@ -2,11 +2,15 @@
 	{{ form.non_field_errors }}
 	<div style="width: 700px">
 	<table>
+		
+		<tr>
+		<td class="form-field">
 		{% for field in form %}
-			{% if not forloop.counter|divisibleby:2 %}
-				<tr>
+			{% if forloop.counter0|divisibleby:4 %}
+				</td>
+				<td class="form-field">
 			{% endif %}
-			<td class="form-field">
+			
 				<div class="fieldWrapper">
 				<span  class="{% if field.errors %}with-errors{% endif %}">
 					{{field.label_tag}}
@@ -16,13 +20,9 @@
 					{{ field.errors }}
 				{% endif %}
 				</div>
-			</td>
-			
-			{% if forloop.counter|divisibleby:2 %}
-				</tr>
-			{% endif %}
-
-		{% endfor %} 
+		{% endfor %}
+		</td>
+		</tr>
 	</table>
 	</br>
 	<hr>
