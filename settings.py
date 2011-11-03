@@ -18,26 +18,15 @@ ADMINS = (
 
 MANAGERS = ADMINS
 
-TEST = 'test' in sys.argv
-
-if TEST:
-    # in-memory SQLite used for testing
-    DATABASES = {
-            'default': {
-                'ENGINE': 'django.db.backends.sqlite3',
-                'NAME': ':memory:',
-                }
-            }
-else:
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.sqlite3',
-            'NAME': os.path.join(os.path.dirname(__file__), 'sqlite.db'),
-            'USER': '', 'PASSWORD': '',
-            'HOST': '',
-            'PORT': '',
-        }
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(os.path.dirname(__file__), 'sqlite.db'),
+        'USER': '', 'PASSWORD': '',
+        'HOST': '',
+        'PORT': '',
     }
+}
 
 TIME_ZONE = 'Europe/Kiev'
 LANGUAGE_CODE = 'en-us'
@@ -100,6 +89,7 @@ INSTALLED_APPS = (
     'extra_commands',
     'model_spectator',
     'south',
+    'django_nose',
 )
 
 
@@ -140,7 +130,8 @@ FIXTURE_DIRS = (
    join_with_proj_path('fixtures'),
    join_with_proj_path('contacts/fixtures'),
 )
-#TEST_RUNNER = 'tddspry.django.runner.TestSuiteRunner'
+
+TEST_RUNNER = 'tddspry.django.runner.TestSuiteRunner'
 
 import logging
 
