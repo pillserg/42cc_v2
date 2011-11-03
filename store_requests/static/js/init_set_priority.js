@@ -12,6 +12,9 @@ $(document).ready(function() {
 		});
 	};
 	
+	function init_tablesorter() {
+		$("#last-requests-table").tablesorter({sortList:[[0,0],[2,1]], widgets: ['zebra']}); 
+	};
 	
 	function init_forms () {
 				
@@ -32,6 +35,11 @@ $(document).ready(function() {
   };
   
   init_forms();
+  init_tablesorter();
+  
+  
+  
+  
 });
 
 
