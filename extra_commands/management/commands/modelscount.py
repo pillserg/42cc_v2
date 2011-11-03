@@ -23,4 +23,4 @@ class Command(BaseCommand):
 
 
         print('\n'.join(lines))
-        sys.stderr.write('\nerror: '.join(lines))
+        sys.stderr.write('error: ' + '\nerror: '.join(lines))
