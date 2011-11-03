@@ -99,6 +99,7 @@ INSTALLED_APPS = (
     'templatelib',
     'extra_commands',
     'model_spectator',
+    'south',
 )
 
 
