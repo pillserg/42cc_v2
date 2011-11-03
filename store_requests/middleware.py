@@ -4,16 +4,19 @@ from django.conf import settings
 from models import StoredRequest
 
 
+def should_be_logged(request):
+    """
+    Chose what urls should not be logged
+    """
+    exclude = ('request/', 'admin/', settings.STATIC_URL)
+
+    if any(request.path.startswith(p) for p in exclude):
+        return False
+    return True
+
+
 class SaveEveryIncomingRequestToDB(object):
     def process_request(self, request):
-        def _include():
-            """checks if current request really must be added to DB"""
-            if request.path == reverse('last-requests'):
-                return False
-            if request.path.startswith(settings.STATIC_URL):
-                return False
-            return True
-
-        if _include():
+        if should_be_logged(request):
             parsed_request = StoredRequest.parse_request(request)
             StoredRequest.objects.create(**parsed_request)
