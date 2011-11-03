@@ -96,7 +96,7 @@ class TestRealRequestsMustBeSaved(HttpTestCase):
             self.go(url)
         self.assert_count(StoredRequest, num_requests)
         self.go(reverse('last-requests'))
-        self.find('<div class="request">', count=num_requests)
+        self.find('<td>GET</td>', count=num_requests)
 
     def test_priority_page(self):
         self.go200(reverse('last-requests-by-priority'))
@@ -122,7 +122,7 @@ class TestRealRequestsMustBeSaved(HttpTestCase):
         self.fv('1', 'for_all_by_ip', '1')
         self.submit200()
         self.go(self.go(reverse('last-requests-by-priority')))
-        self.find('pr: 999', count=StoredRequest.objects.all().count())
+        self.find('td>999</td>', count=StoredRequest.objects.all().count())
 
     def test_requests_to_priority_modification_should_not_be_logged(self):
         num_requests = StoredRequest.objects.all().count()
