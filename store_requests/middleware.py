@@ -8,7 +8,7 @@ def should_be_logged(request):
     """
     Chose what urls should not be logged
     """
-    exclude = ('request/', 'admin/', settings.STATIC_URL)
+    exclude = ('/last-requests/', '/admin/', settings.STATIC_URL)
 
     if any(request.path.startswith(p) for p in exclude):
         return False

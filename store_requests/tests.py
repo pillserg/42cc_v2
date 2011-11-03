@@ -122,7 +122,7 @@ class TestRealRequestsMustBeSaved(HttpTestCase):
         self.fv('1', 'for_all_by_ip', '1')
         self.submit200()
         self.go(self.go(reverse('last-requests-by-priority')))
-        self.find('999', count=StoredRequest.objects.all().count() - 1)
+        self.find('pr: 999', count=StoredRequest.objects.all().count())
 
     def test_requests_to_priority_modification_should_not_be_logged(self):
         num_requests = StoredRequest.objects.all().count()
