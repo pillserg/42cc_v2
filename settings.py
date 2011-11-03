@@ -25,6 +25,7 @@ DATABASES = {
         'USER': '', 'PASSWORD': '',
         'HOST': '',
         'PORT': '',
+        'TEST_NAME': ':memory:'
     }
 }
 
