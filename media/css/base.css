@@ -297,3 +297,7 @@ td.user_detail {
 	padding-right:10px;
 }
 
+table#last-requests-table {margin: 10px 0 0 0;}
+table#options *{font-size:small;}
+
+

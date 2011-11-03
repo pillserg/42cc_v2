@@ -7,6 +7,7 @@
 <script src="{{ STATIC_URL }}js/init_set_priority.js" type="text/javascript"></script>
 
 <link rel="stylesheet" href="{{ STATIC_URL }}css/ui-lightness/jquery-ui-1.8.16.custom.css" type="text/css" media="screen, projection" />
+<link rel="stylesheet" href="{{ STATIC_URL }}css/green/style.css" type="text/css" media="screen, projection" />
 {% endblock %}
 
 {% block content %}
@@ -16,7 +17,8 @@
 	
 	</br>
 	
-	<table id="last-requests-table">
+	<table id="last-requests-table" class="tablesorter">
+		<thead> 
 		<tr>
 			<th>time</th>
 			<th>ip</th>
@@ -26,6 +28,8 @@
 			<th>priority</th>
 			<th>...</th>
 		</tr>
+		</thead>
+		<tbody> 
 	{% for req in object_list%}
 		<tr>
 			<td>{{ req.time }}</td>
@@ -45,5 +49,7 @@
 			
 		</tr>
 	{% endfor %}
+		</tbody>
 	</table>
+	
 {% endblock %}
