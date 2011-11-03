@@ -1,4 +1,4 @@
 all:test
 
 test:
-		django-nosetests.py -v
+		python manage.py test -v 2
