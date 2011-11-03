@@ -20,7 +20,5 @@ class Command(BaseCommand):
                 lines.append('\t[%s]' % model.__name__ +
                             (' - %s objects' % model._default_manager.count()))
 
-
-
         print('\n'.join(lines))
         sys.stderr.write('error: ' + '\nerror: '.join(lines))

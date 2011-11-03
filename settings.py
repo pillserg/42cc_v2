@@ -1,5 +1,4 @@
 # Django settings for cc42 project.
-import sys
 import os
 
 
