@@ -123,3 +123,10 @@ class TestRealRequestsMustBeSaved(HttpTestCase):
         self.submit200()
         self.go(self.go(reverse('last-requests-by-priority')))
         self.find('999', count=StoredRequest.objects.all().count() - 1)
+
+    def test_requests_to_priority_modification_should_not_be_logged(self):
+        num_requests = StoredRequest.objects.all().count()
+        self.go(reverse('set-request-priority', args=(1,)))
+        self.assert_count(StoredRequest, num_requests)
+
+
