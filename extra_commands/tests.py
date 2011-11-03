@@ -1,15 +1,11 @@
-import cStringIO
-import re
-import os
-import subprocess
 import datetime
-
-from django.conf import settings
-
-import sys
+import os
+import re
+import subprocess
 
 from tddspry.django import TestCase
-from django.core import management
+
+from django.conf import settings
 
 
 class CommandTest(TestCase):
@@ -20,7 +16,6 @@ class CommandTest(TestCase):
 
         filename = datetime.datetime.now().date().strftime('%Y-%m-%d') + '.dat'
         full_filename = os.path.join(settings.PROJECT_PATH, filename)
-
 
         with open('/dev/null', 'w') as devnull:
             subprocess.call([shell_script_path, ], shell=True, stdout=devnull)
