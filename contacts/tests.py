@@ -24,7 +24,6 @@ ORIG_CONTACTS_DICT = dict(name=u'Sergey',
                           u'Currently looking for work.'),
                      birthdate=u'1987-09-03')
 
-
 CONTACTS_DICT = dict(name=u'Sergey',
                      last_name=u'Pilyavskiy',
                      email=u'pill.sv0test@gmail.com',
@@ -161,6 +160,3 @@ class TestEditPage(TestCase):
         fields = f.fields.keys()
         regexp = '.+'.join(['id="id_' + f + '"' for f in fields])
         self.find(regexp, flags="s")
-
-
-

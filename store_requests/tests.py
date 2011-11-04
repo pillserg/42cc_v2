@@ -128,5 +128,3 @@ class TestRealRequestsMustBeSaved(HttpTestCase):
         num_requests = StoredRequest.objects.all().count()
         self.go(reverse('set-request-priority', args=(1,)))
         self.assert_count(StoredRequest, num_requests)
-
-
