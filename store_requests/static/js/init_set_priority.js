@@ -3,8 +3,15 @@ $(document).ready(function() {
 	
 	function init_set_form() {
 		$('.set-priority-form').ajaxForm({
-			target: '#dialog',
-			success: function(){
+			success: function(data, textStatus, xhr){
+				$('#dialog').html(data)
+				// little ugly ... but i really don't have spirit to
+				// make set-priority view return json with status
+				// and rewrite tests
+				// thus i think it'll work for now
+				if ((xhr.status==200) && (data.indexOf("reload_page") != -1)){
+					location.reload()
+				}
 				init_set_form();
 			}
 									
@@ -19,9 +26,9 @@ $(document).ready(function() {
 	function init_forms () {
 				
 		var options = {
-			target:        "#dialog",
 	        beforeSubmit:   function(){},
-	        success:		function(){
+	        success:		function(data, textStatus, xhr){
+	        					$('#dialog').html(data)
 								$('#dialog').dialog({//width: 200,
 													 resizable: false,
 													 position: ['right','bottom'],

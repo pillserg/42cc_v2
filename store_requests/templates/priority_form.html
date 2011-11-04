@@ -1,5 +1,9 @@
 <form action="{% url set-request-priority form.id%}" method="post" class="set-priority-form">
 	{% csrf_token %}
+	{# not best decision but it works? isn't it?  #}
+	{% if not form.errors %}
+	<div style="display:none">reload_page</div>
+	{% endif %}
   	<div>
   		<table class="priority-change-form">
   		<tr>
